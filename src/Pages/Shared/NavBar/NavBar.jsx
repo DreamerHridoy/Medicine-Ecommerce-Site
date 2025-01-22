@@ -16,6 +16,9 @@ const NavBar = () => {
         <Link to="/">Languages DropDown</Link>
       </li>
       <li>
+        <Link to="/login">Login</Link>
+      </li>
+      <li>
         <Link to="/">Join Us</Link>
       </li>
     </>

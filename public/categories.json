@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "name": "Tablets",
+    "image": "https://example.com/images/tablets.png",
+    "numberOfMedicines": 125
+  },
+  {
+    "id": "2",
+    "name": "Syrups",
+    "image": "https://example.com/images/syrups.png",
+    "numberOfMedicines": 80
+  },
+  {
+    "id": "3",
+    "name": "Capsules",
+    "image": "https://example.com/images/capsules.png",
+    "numberOfMedicines": 150
+  },
+  {
+    "id": "4",
+    "name": "Injections",
+    "image": "https://example.com/images/injections.png",
+    "numberOfMedicines": 60
+  },
+  {
+    "id": "5",
+    "name": "Ointments",
+    "image": "https://example.com/images/ointments.png",
+    "numberOfMedicines": 45
+  },
+  {
+    "id": "6",
+    "name": "Other Products",
+    "image": "https://example.com/images/other-products.png",
+    "numberOfMedicines": 30
+  }
+]
