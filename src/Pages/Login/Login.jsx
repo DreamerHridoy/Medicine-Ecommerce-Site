@@ -1,6 +1,6 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -8,8 +8,17 @@ import {
 } from "react-simple-captcha";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { Helmet } from "react-helmet-async";
+
 const Login = () => {
+  const [disabled, setDisabled] = useState(true);
   const { signIn } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
@@ -47,6 +56,10 @@ const Login = () => {
 
   return (
     <>
+      <Helmet>
+        <title> Medicine | Sign Up</title>
+      </Helmet>
+
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col md:flex-row-reverse">
           <div className="text-center md:w-1/2 lg:text-left">
@@ -100,7 +113,7 @@ const Login = () => {
               </div>
               <div className="form-control mt-6">
                 <input
-                  //   disabled={disabled}
+                  disabled={disabled}
                   className="btn btn-primary"
                   type="submit"
                   value="Login"
@@ -108,9 +121,9 @@ const Login = () => {
               </div>
             </form>
             <p>
-              {/* <small>
+              <small>
                 New Here? <Link to="/signup">Create an account</Link>
-              </small> */}
+              </small>
             </p>
           </div>
         </div>

@@ -1,24 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import CategoryMedicine from "../Shared/CategoryMedicine";
 
-const CategoryDetails = () => {
-  const { categoryId } = useParams();
+const Shop = () => {
   const [medicines, setMedicines] = useState([]);
   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    // Fetch medicines for the selected category
+    // Fetch medicines
     axiosSecure
-      .get(`/medicines?categoryId=${categoryId}`)
+      .get(`/medicines`)
       .then((res) => setMedicines(res.data))
       .catch((err) => console.error("Error fetching medicines:", err));
-  }, [categoryId]);
+  }, []);
 
-  return (
-    <CategoryMedicine title="Medicines in category" medicines={medicines} />
-  );
+  return <CategoryMedicine title="Shop" medicines={medicines} />;
 };
 
-export default CategoryDetails;
+export default Shop;

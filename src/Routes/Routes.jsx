@@ -2,6 +2,14 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
+import SignUp from "../Pages/SignUp/SignUp";
+import Secret from "../Pages/Shared/Secret/Secret";
+import PrivateRoute from "./PrivateRoute";
+import MedicineCard from "../Components/MedicineCard/MedicineCard";
+import CategoryDetails from "../Pages/Category/CategoryDetails";
+import Shop from "../Pages/Shop/Shop";
+import Dashboard from "../Layout/Dashboard";
+import Cart from "../Pages/Carts/Cart";
 
 export const router = createBrowserRouter([
   {
@@ -10,12 +18,50 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: <Home></Home>
       },
       {
         path: "login",
-        element: <Login></Login>,
+        element: <Login></Login>
       },
-    ],
+      {
+        path: "signup",
+        element: <SignUp></SignUp>
+      },
+      {
+        path: "shops",
+        element: <Shop />
+      },
+      {
+        path: "categories/:categoryId",
+        element: <CategoryDetails />
+      },
+      {
+        path: "secret",
+        element: (
+          <PrivateRoute>
+            <Secret></Secret>
+          </PrivateRoute>
+        )
+      },
+      {
+        path: "medicineCard",
+        element: <MedicineCard></MedicineCard>
+      }
+    ]
   },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "carts",
+        element: <Cart />
+      }
+    ]
+  }
 ]);

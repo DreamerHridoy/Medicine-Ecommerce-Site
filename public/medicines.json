@@ -1,9 +1,9 @@
 [
   {
-    "id": "1",
+    "_id": "64b1a61465e3db145dd1af02",
     "name": "Paracetamol 500mg",
     "genericName": "Paracetamol",
-    "category": "Tablet",
+    "categoryId": "64b1a61465e3db145dd1aefc",
     "company": "ABC Pharmaceuticals",
     "description": "Used to treat mild to moderate pain and reduce fever.",
     "massUnit": "500mg",
@@ -14,10 +14,10 @@
     "sellerEmail": "seller1@example.com"
   },
   {
-    "id": "2",
+    "_id": "64b1a61465e3db145dd1af03",
     "name": "Cough Syrup DX",
     "genericName": "Dextromethorphan",
-    "category": "Syrup",
+    "categoryId": "64b1a61465e3db145dd1aefd",
     "company": "XYZ Pharma",
     "description": "Effective relief for dry cough.",
     "massUnit": "100ml",
@@ -28,10 +28,10 @@
     "sellerEmail": "seller2@example.com"
   },
   {
-    "id": "3",
+    "_id": "64b1a61465e3db145dd1af04",
     "name": "Amoxicillin Capsule",
     "genericName": "Amoxicillin",
-    "category": "Capsule",
+    "categoryId": "64b1a61465e3db145dd1aefe",
     "company": "HealthCare Labs",
     "description": "Antibiotic used to treat bacterial infections.",
     "massUnit": "250mg",
@@ -42,10 +42,10 @@
     "sellerEmail": "seller3@example.com"
   },
   {
-    "id": "4",
+    "_id": "64b1a61465e3db145dd1af05",
     "name": "Insulin Injection",
     "genericName": "Insulin",
-    "category": "Injection",
+    "categoryId": "64b1a61465e3db145dd1aeff",
     "company": "DiabetesCare",
     "description": "Regulates blood sugar levels.",
     "massUnit": "10ml",
@@ -56,10 +56,10 @@
     "sellerEmail": "seller1@example.com"
   },
   {
-    "id": "5",
+    "_id": "64b1a61465e3db145dd1af06",
     "name": "Vitamin D3 Supplement",
     "genericName": "Cholecalciferol",
-    "category": "Others",
+    "categoryId": "64b1a61465e3db145dd1af01",
     "company": "Wellness Inc.",
     "description": "Supports bone health and immune function.",
     "massUnit": "1000IU",
@@ -70,10 +70,10 @@
     "sellerEmail": "seller4@example.com"
   },
   {
-    "id": "6",
+    "_id": "64b1a61465e3db145dd1af07",
     "name": "Antacid Chewable Tablet",
     "genericName": "Calcium Carbonate",
-    "category": "Tablet",
+    "categoryId": "64b1a61465e3db145dd1aefc",
     "company": "DigestiveCare",
     "description": "Relieves heartburn and acid indigestion.",
     "massUnit": "500mg",
@@ -84,10 +84,10 @@
     "sellerEmail": "seller2@example.com"
   },
   {
-    "id": "7",
+    "_id": "64b1a61465e3db145dd1af08",
     "name": "Multivitamin Syrup",
     "genericName": "Vitamin Complex",
-    "category": "Syrup",
+    "categoryId": "64b1a61465e3db145dd1aefd",
     "company": "LifeBoost",
     "description": "Boosts immunity and overall health.",
     "massUnit": "200ml",
@@ -98,10 +98,10 @@
     "sellerEmail": "seller3@example.com"
   },
   {
-    "id": "8",
+    "_id": "64b1a61465e3db145dd1af09",
     "name": "Pain Relief Balm",
     "genericName": "Menthol & Camphor",
-    "category": "Others",
+    "categoryId": "64b1a61465e3db145dd1af01",
     "company": "Care Remedies",
     "description": "Provides quick relief from muscle pain.",
     "massUnit": "50g",
@@ -112,10 +112,10 @@
     "sellerEmail": "seller4@example.com"
   },
   {
-    "id": "9",
+    "_id": "64b1a61465e3db145dd1af0a",
     "name": "Cetrizine Tablet",
     "genericName": "Cetirizine Hydrochloride",
-    "category": "Tablet",
+    "categoryId": "64b1a61465e3db145dd1aefc",
     "company": "AllergyCare",
     "description": "Used to relieve allergy symptoms such as runny nose and sneezing.",
     "massUnit": "10mg",
@@ -124,131 +124,5 @@
     "stock": 120,
     "image": "https://i.ibb.co.com/84GwRWw/thought-catalog-Q4e-Wnth5-S74-unsplash.jpg",
     "sellerEmail": "seller5@example.com"
-  },
-  {
-    "id": "10",
-    "name": "ORS Solution",
-    "genericName": "Oral Rehydration Salt",
-    "category": "Syrup",
-    "company": "HydraPharma",
-    "description": "Replenishes electrolytes to prevent dehydration.",
-    "massUnit": "200ml",
-    "pricePerUnit": 1.75,
-    "discountPercentage": 0,
-    "stock": 100,
-    "image": "https://i.ibb.co.com/PgjPRVX/xavier-duwez-UHFFFA12k0w-unsplash.jpg",
-    "sellerEmail": "seller6@example.com"
-  },
-  {
-    "id": "11",
-    "name": "Azithromycin Tablet",
-    "genericName": "Azithromycin",
-    "category": "Tablet",
-    "company": "Medica Inc.",
-    "description": "Treats bacterial infections like bronchitis and sinusitis.",
-    "massUnit": "500mg",
-    "pricePerUnit": 5.5,
-    "discountPercentage": 10,
-    "stock": 70,
-    "image": "https://i.ibb.co.com/C5VHVRf/simone-van-der-koelen-l-SYv-RWr-NR5-U-unsplash.jpg",
-    "sellerEmail": "seller7@example.com"
-  },
-  {
-    "id": "12",
-    "name": "Omeprazole Capsule",
-    "genericName": "Omeprazole",
-    "category": "Capsule",
-    "company": "DigestiveHealth",
-    "description": "Relieves acid reflux and stomach ulcers.",
-    "massUnit": "20mg",
-    "pricePerUnit": 3.2,
-    "discountPercentage": 7,
-    "stock": 85,
-    "image": "https://i.ibb.co.com/Gkjc3pS/anirudh-UVa6-OF2-XXIc-unsplash.jpg",
-    "sellerEmail": "seller2@example.com"
-  },
-  {
-    "id": "13",
-    "name": "Ibuprofen Tablet",
-    "genericName": "Ibuprofen",
-    "category": "Tablet",
-    "company": "PainFree",
-    "description": "Used to treat pain, inflammation, and fever.",
-    "massUnit": "200mg",
-    "pricePerUnit": 1.8,
-    "discountPercentage": 10,
-    "stock": 140,
-    "image": "https://i.ibb.co.com/qR4jVmr/dan-dennis-Ic-AKvvms4ug-unsplash.jpg",
-    "sellerEmail": "seller1@example.com"
-  },
-  {
-    "id": "14",
-    "name": "Thyroxine Tablet",
-    "genericName": "Levothyroxine Sodium",
-    "category": "Tablet",
-    "company": "ThyroidHealth",
-    "description": "Used to treat hypothyroidism.",
-    "massUnit": "50mcg",
-    "pricePerUnit": 2.1,
-    "discountPercentage": 5,
-    "stock": 130,
-    "image": "https://i.ibb.co.com/55Pkx6q/mykenzie-johnson-5-Hib8u-DTm6g-unsplash.jpg",
-    "sellerEmail": "seller8@example.com"
-  },
-  {
-    "id": "15",
-    "name": "Vitamin B Complex Capsule",
-    "genericName": "Vitamin B Complex",
-    "category": "Capsule",
-    "company": "VitaLife",
-    "description": "Supports nerve function and energy production.",
-    "massUnit": "500mg",
-    "pricePerUnit": 7,
-    "discountPercentage": 15,
-    "stock": 95,
-    "image": "https://i.ibb.co.com/mcxcNLg/ksenia-yakovleva-cf-Ik-M5-Jg-Gg-E-unsplash.jpg",
-    "sellerEmail": "seller3@example.com"
-  },
-  {
-    "id": "16",
-    "name": "Antiseptic Cream",
-    "genericName": "Chlorhexidine & Cetrimide",
-    "category": "Cream",
-    "company": "CarePlus",
-    "description": "Helps prevent infection in minor cuts and wounds.",
-    "massUnit": "25g",
-    "pricePerUnit": 3.5,
-    "discountPercentage": 0,
-    "stock": 60,
-    "image": "https://i.ibb.co.com/m83JMVs/pmv-chamara-qg-OBq-Y5d-A0-unsplash.jpg",
-    "sellerEmail": "seller9@example.com"
-  },
-  {
-    "id": "17",
-    "name": "Calcium Supplement Tablet",
-    "genericName": "Calcium Carbonate",
-    "category": "Tablet",
-    "company": "BoneCare",
-    "description": "Supports bone strength and prevents calcium deficiency.",
-    "massUnit": "600mg",
-    "pricePerUnit": 3,
-    "discountPercentage": 10,
-    "stock": 110,
-    "image": "https://i.ibb.co.com/M5KZZhf/nathan-dumlao-k-H693-U4j89k-unsplash.jpg",
-    "sellerEmail": "seller6@example.com"
-  },
-  {
-    "id": "18",
-    "name": "Skin Ointment",
-    "genericName": "Hydrocortisone",
-    "category": "Ointment",
-    "company": "DermaCare",
-    "description": "Relieves itching and inflammation of the skin.",
-    "massUnit": "15g",
-    "pricePerUnit": 2.75,
-    "discountPercentage": 5,
-    "stock": 80,
-    "image": "https://i.ibb.co.com/Lz7krVB/r-r-medicinals-c-NLr-Dg-SMZ9-A-unsplash.jpg",
-    "sellerEmail": "seller10@example.com"
   }
 ]

@@ -4,7 +4,7 @@ const CategoryCard = ({ category, onClick }) => {
   return (
     <div
       className="category-card border rounded-lg p-4 shadow-md hover:shadow-lg cursor-pointer"
-      onClick={() => onClick(category.id)}
+      onClick={() => onClick(category._id)}
     >
       <img
         src={category.image}
