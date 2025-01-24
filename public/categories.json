@@ -2,37 +2,37 @@
   {
     "_id": "64b1a61465e3db145dd1aefc",
     "name": "Tablets",
-    "image": "https://example.com/images/tablets.png",
+    "image": "https://i.ibb.co.com/99HbvdC/ksenia-yakovleva-cf-Ik-M5-Jg-Gg-E-unsplash-1.jpg",
     "numberOfMedicines": 125
   },
   {
     "_id": "64b1a61465e3db145dd1aefd",
     "name": "Syrups",
-    "image": "https://example.com/images/syrups.png",
+    "image": "https://i.ibb.co.com/W6Gh5DF/mockup-free-Pb-GC2-COj-Wg-A-unsplash.jpg",
     "numberOfMedicines": 80
   },
   {
     "_id": "64b1a61465e3db145dd1aefe",
     "name": "Capsules",
-    "image": "https://example.com/images/capsules.png",
+    "image": "https://i.ibb.co.com/nbp7DZR/leohoho-DRch-VK5apjw-unsplash.jpg",
     "numberOfMedicines": 150
   },
   {
     "_id": "64b1a61465e3db145dd1aeff",
     "name": "Injections",
-    "image": "https://example.com/images/injections.png",
+    "image": "https://i.ibb.co.com/hRxmD4Z/carina-s-Zswf-N3d-FD08-unsplash.jpg",
     "numberOfMedicines": 60
   },
   {
     "_id": "64b1a61465e3db145dd1af00",
     "name": "Ointments",
-    "image": "https://example.com/images/ointments.png",
+    "image": "https://i.ibb.co.com/bXRqpp7/erik-mclean-Kx-VVLGp-Ayw-A-unsplash.jpg",
     "numberOfMedicines": 45
   },
   {
     "_id": "64b1a61465e3db145dd1af01",
     "name": "Other Products",
-    "image": "https://example.com/images/other-products.png",
+    "image": "https://i.ibb.co.com/0ZCy49j/sarah-dorweiler-x2-Tmfd1-Sg-A-unsplash.jpg",
     "numberOfMedicines": 30
   }
 ]
