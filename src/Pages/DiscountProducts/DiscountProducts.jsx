@@ -3,13 +3,97 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation, Pagination } from "swiper";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useCart from "../../hooks/useCart";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const DiscountProducts = ({ medicines }) => {
   // Filter medicines with discounts
   const discountProducts = medicines.filter(
     (item) => item.discountPercentage > 0
   );
+
+  const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
+  const [cart, refetch] = useCart();
+
+  const handleAddToCart = (medicine) => {
+    const {
+      name,
+      company,
+      pricePerUnit,
+      discountPercentage,
+      stock,
+      image,
+      _id
+    } = medicine;
+    if (user && user.email) {
+      const findMedicineInCart = cart.find((item) => item.medicineId === _id);
+      console.log("--", findMedicineInCart);
+      const cartItem = {
+        name,
+        email: user.email,
+        company,
+        pricePerUnit,
+        discountPercentage,
+        stock,
+        image,
+        medicineId: _id,
+        quantity: 1
+      };
+      if (findMedicineInCart) {
+        axiosSecure
+          .patch(`/carts/${findMedicineInCart._id}`, {
+            quantity: findMedicineInCart?.quantity
+              ? findMedicineInCart?.quantity + 1
+              : 1
+          })
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.modifiedCount > 0) {
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: `${name} added to your cart`,
+                showConfirmButton: false,
+                timer: 1500
+              });
+              refetch();
+            }
+          });
+
+        return;
+      }
+
+      axiosSecure.post("/carts", cartItem).then((res) => {
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${name} added to your cart`,
+            showConfirmButton: false,
+            timer: 1500
+          });
+          refetch();
+        }
+      });
+    } else {
+      Swal.fire({
+        title: "You are not Logged In",
+        text: "Please login to add to the cart?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, login!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login", { state: { from: location } });
+        }
+      });
+    }
+  };
 
   return (
     <div className="my-10 px-5">
@@ -21,7 +105,7 @@ const DiscountProducts = ({ medicines }) => {
         slidesPerView={3}
         navigation
         pagination={{ clickable: true }}
-        modules={[Navigation, Pagination]}
+        modules={[]}
         className="discount-slider"
       >
         {discountProducts.map((product) => (
@@ -44,7 +128,10 @@ const DiscountProducts = ({ medicines }) => {
                 ).toFixed(2)}{" "}
                 USD
               </p>
-              <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+              <button
+                className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                onClick={() => handleAddToCart(product)}
+              >
                 Add to Cart
               </button>
             </div>

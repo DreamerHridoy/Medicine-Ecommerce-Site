@@ -8,14 +8,14 @@ import {
   FaSearch,
   FaShoppingCart,
   FaUsers,
-  FaUtensils
+  FaUtensils,
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
   const [cart] = useCart();
-  let isAdmin = false;
+  const isAdmin = true;
 
   return (
     <div className="flex">

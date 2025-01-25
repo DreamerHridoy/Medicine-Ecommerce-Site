@@ -12,6 +12,7 @@ const NavBar = () => {
       .then(() => {})
       .catch((error) => console.log(error));
   };
+
   const navOptions = (
     <>
       <li>
@@ -20,9 +21,11 @@ const NavBar = () => {
       <li>
         <Link to="/shops">Shop</Link>
       </li>
-      <li>
-        <Link to="/">Join Us</Link>
-      </li>
+      {!user && (
+        <li>
+          <Link to="/">Join Us</Link>
+        </li>
+      )}
 
       <li>
         <Link to="/dashboard/carts">
@@ -32,12 +35,7 @@ const NavBar = () => {
       </li>
 
       {user ? (
-        <>
-          {/* <span>{user?.displayName}</span> */}
-          <button onClick={handleLogOut} className="btn btn-ghost">
-            LogOut
-          </button>
-        </>
+        <></>
       ) : (
         <>
           <li>
@@ -83,9 +81,32 @@ const NavBar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Get started</a>
-        </div>
+
+        {user && (
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost rounded-btn"
+            >
+              <img src={user.photoURL} alt="Profile image" />
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu dropdown-content bg-base-100 text-black rounded-box z-[1] mt-4 w-52 p-2 shadow"
+            >
+              <li>
+                <a>Update profile</a>
+              </li>
+              <li>
+                <a>Dashboard</a>
+              </li>
+              <li>
+                <button onClick={handleLogOut}>LogOut</button>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </>
   );

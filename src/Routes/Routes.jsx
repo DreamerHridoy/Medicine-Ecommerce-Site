@@ -10,6 +10,8 @@ import CategoryDetails from "../Pages/Category/CategoryDetails";
 import Shop from "../Pages/Shop/Shop";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Carts/Cart";
+import AllUsers from "../Pages/AllUsers/AllUsers";
+import Payment from "../Pages/CheckOut/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +63,15 @@ export const router = createBrowserRouter([
       {
         path: "carts",
         element: <Cart />
+      },
+      // admin routes
+      {
+        path: "users",
+        element: <AllUsers></AllUsers>
+      },
+      {
+        path: "payment",
+        element: <Payment></Payment>
       }
     ]
   }

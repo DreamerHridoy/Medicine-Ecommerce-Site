@@ -8,7 +8,7 @@ const CategoryMedicine = ({ title, medicines }) => {
   const [selectedMedicine, setSelectedMedicine] = useState(null);
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  const [cart] = useCart();
+  const [cart, refetch] = useCart();
 
   const handleAddToCart = (medicine) => {
     const {
