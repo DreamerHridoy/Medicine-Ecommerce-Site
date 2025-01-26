@@ -12,10 +12,14 @@ import {
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
+// import useAuth from "../hooks/useAuth";
+import useAdmin from "../hooks/useAdmin";
+import useSeller from "../hooks/useSeller";
 
 const Dashboard = () => {
   const [cart] = useCart();
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
+  const [isSeller] = useSeller();
 
   return (
     <div className="flex">
@@ -31,6 +35,36 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
+                <NavLink to="/dashboard/user-management">
+                  <FaUsers></FaUsers>
+                  Manage Users
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/category-management">
+                  <FaUsers></FaUsers>
+                  Manage Category
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/payment-management">
+                  <FaUsers></FaUsers>
+                  Payment management
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/sales">
+                  <FaUsers></FaUsers>
+                  Sales Report
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/banners">
+                  <FaUsers></FaUsers>
+                  Manage Banner Advertise
+                </NavLink>
+              </li>
+              {/* <li>
                 <NavLink to="/dashboard/addItems">
                   <FaUtensils></FaUtensils>
                   Add Items
@@ -41,17 +75,38 @@ const Dashboard = () => {
                   <FaList></FaList>
                   Manage Items
                 </NavLink>
-              </li>
+              </li> */}
+            </>
+          ) : isSeller ? (
+            <>
               <li>
-                <NavLink to="/dashboard/bookings">
-                  <FaBook></FaBook>
-                  Manage Bookings
+                <NavLink to="/dashboard/userHome">
+                  <FaHome></FaHome>
+                  Seller Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/users">
-                  <FaUsers></FaUsers>
-                  All Users
+                <NavLink to="/dashboard/history">
+                  <FaCalendar></FaCalendar>
+                  Not History
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/cart">
+                  <FaShoppingCart></FaShoppingCart>
+                  My Cart ({cart.length})
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/review">
+                  <FaAd></FaAd>
+                  Add a Review
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/paymentHistory">
+                  <FaList></FaList>
+                  Real Payment History
                 </NavLink>
               </li>
             </>

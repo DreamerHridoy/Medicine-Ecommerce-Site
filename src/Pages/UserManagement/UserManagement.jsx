@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
-import useAxiosSecure from '../../hooks/useAxiosSecure';
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
-const AllUsers = () => {
+const UserManagement = () => {
   const axiosSecure = useAxiosSecure();
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
@@ -110,4 +110,4 @@ const AllUsers = () => {
   );
 };
 
-export default AllUsers;
+export default UserManagement;

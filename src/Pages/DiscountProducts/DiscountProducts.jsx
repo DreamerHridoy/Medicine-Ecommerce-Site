@@ -26,11 +26,11 @@ const DiscountProducts = ({ medicines }) => {
       discountPercentage,
       stock,
       image,
-      _id
+      _id,
     } = medicine;
     if (user && user.email) {
       const findMedicineInCart = cart.find((item) => item.medicineId === _id);
-      console.log("--", findMedicineInCart);
+      // console.log("--", findMedicineInCart);
       const cartItem = {
         name,
         email: user.email,
@@ -40,14 +40,14 @@ const DiscountProducts = ({ medicines }) => {
         stock,
         image,
         medicineId: _id,
-        quantity: 1
+        quantity: 1,
       };
       if (findMedicineInCart) {
         axiosSecure
           .patch(`/carts/${findMedicineInCart._id}`, {
             quantity: findMedicineInCart?.quantity
               ? findMedicineInCart?.quantity + 1
-              : 1
+              : 1,
           })
           .then((res) => {
             console.log(res.data);
@@ -57,7 +57,7 @@ const DiscountProducts = ({ medicines }) => {
                 icon: "success",
                 title: `${name} added to your cart`,
                 showConfirmButton: false,
-                timer: 1500
+                timer: 1500,
               });
               refetch();
             }
@@ -73,7 +73,7 @@ const DiscountProducts = ({ medicines }) => {
             icon: "success",
             title: `${name} added to your cart`,
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
           });
           refetch();
         }
@@ -86,7 +86,7 @@ const DiscountProducts = ({ medicines }) => {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, login!"
+        confirmButtonText: "Yes, login!",
       }).then((result) => {
         if (result.isConfirmed) {
           navigate("/login", { state: { from: location } });

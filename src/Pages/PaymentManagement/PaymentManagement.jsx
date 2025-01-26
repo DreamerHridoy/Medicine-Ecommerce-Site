@@ -1,27 +1,24 @@
-import useAuth from "../../hooks/useAuth";
+import React from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import moment from "moment";
 
-const UserHome = () => {
-  const { user } = useAuth();
+const PaymentManagement = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: payments, refetch } = useQuery({
+  const { data: payments = [], refetch } = useQuery({
     queryKey: ["payments"],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/payments/${user?.email}`);
+      const res = await axiosSecure.get("/payments/all");
       return res.data;
     },
   });
-
-  // console.log(payments);
+  console.log(payments);
 
   return (
     <div>
-      <h2 className="text-3xl">
-        <span>Hi, Welcome </span>
-        {user?.displayName ? user.displayName : "Back"}
-      </h2>
+      <div className="flex justify-evenly my-4">
+        <h2 className="text-3xl">Total Payments: {payments?.length}</h2>
+      </div>
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
           {/* head */}
@@ -46,13 +43,13 @@ const UserHome = () => {
                 <td>{payment.status}</td>
 
                 {/* <td>
-                  <button
-                    onClick={() => handleDeleteUser(user)}
-                    className="btn btn-ghost btn-lg"
-                  >
-                    <FaTrashAlt className="text-red-600"></FaTrashAlt>
-                  </button>
-                </td> */}
+                       <button
+                         onClick={() => handleDeleteUser(user)}
+                         className="btn btn-ghost btn-lg"
+                       >
+                         <FaTrashAlt className="text-red-600"></FaTrashAlt>
+                       </button>
+                     </td> */}
               </tr>
             ))}
           </tbody>
@@ -62,4 +59,4 @@ const UserHome = () => {
   );
 };
 
-export default UserHome;
+export default PaymentManagement;

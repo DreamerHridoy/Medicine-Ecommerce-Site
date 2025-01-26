@@ -22,7 +22,7 @@ const CheckoutForm = () => {
 
   useEffect(() => {
     if (totalPrice > 0) {
-      console.log(totalPrice);
+      // console.log(totalPrice);
 
       axiosSecure
         .post("/create-payment-intent", {
@@ -30,7 +30,7 @@ const CheckoutForm = () => {
           quantity: totalItem,
         })
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           setClientSecret(res.data.clientSecret);
         });
     }

@@ -9,12 +9,14 @@ import CategoryDetails from "../Pages/Category/CategoryDetails";
 import Shop from "../Pages/Shop/Shop";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Carts/Cart";
-import AllUsers from "../Pages/AllUsers/AllUsers";
+import UserManagement from "../Pages/UserManagement/UserManagement";
 import Payment from "../Pages/CheckOut/Payment";
 import AdminHome from "../Components/AdminHome/AdminHome";
 import UserHome from "../Components/UserHome/UserHome";
 import PaymentHistory from "../Pages/CheckOut/PaymentHistory";
 import InvoicePage from "../Pages/InvoicePage/InvoicePage";
+import CategoryManagement from "../Pages/CategoryManagement/CategoryManagement";
+import PaymentManagement from "../Pages/PaymentManagement/PaymentManagement";
 
 export const router = createBrowserRouter([
   {
@@ -65,12 +67,16 @@ export const router = createBrowserRouter([
       },
       // admin routes
       {
-        path: "users",
-        element: <AllUsers></AllUsers>,
+        path: "user-management",
+        element: <UserManagement></UserManagement>,
       },
       {
-        path: "payment",
-        element: <Payment></Payment>,
+        path: "category-management",
+        element: <CategoryManagement></CategoryManagement>,
+      },
+      {
+        path: "payment-management",
+        element: <PaymentManagement></PaymentManagement>,
       },
       {
         path: "invoice",

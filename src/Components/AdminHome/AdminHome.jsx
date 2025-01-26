@@ -162,7 +162,7 @@ const AdminHome = () => {
           </BarChart>
         </div>
         <div className="w-1/2">
-          <PieChart width={400} height={400}>
+          {/* <PieChart width={400} height={400}>
             <Pie
               data={pieChartData}
               cx="50%"
@@ -181,7 +181,7 @@ const AdminHome = () => {
               ))}
             </Pie>
             <Legend></Legend>
-          </PieChart>
+          </PieChart> */}
         </div>
       </div>
     </div>
