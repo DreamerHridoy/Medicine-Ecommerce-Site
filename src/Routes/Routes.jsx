@@ -5,13 +5,16 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import Secret from "../Pages/Shared/Secret/Secret";
 import PrivateRoute from "./PrivateRoute";
-import MedicineCard from "../Components/MedicineCard/MedicineCard";
 import CategoryDetails from "../Pages/Category/CategoryDetails";
 import Shop from "../Pages/Shop/Shop";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Carts/Cart";
 import AllUsers from "../Pages/AllUsers/AllUsers";
 import Payment from "../Pages/CheckOut/Payment";
+import AdminHome from "../Components/AdminHome/AdminHome";
+import UserHome from "../Components/UserHome/UserHome";
+import PaymentHistory from "../Pages/CheckOut/PaymentHistory";
+import InvoicePage from "../Pages/InvoicePage/InvoicePage";
 
 export const router = createBrowserRouter([
   {
@@ -20,23 +23,23 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>
+        element: <Home></Home>,
       },
       {
         path: "login",
-        element: <Login></Login>
+        element: <Login></Login>,
       },
       {
         path: "signup",
-        element: <SignUp></SignUp>
+        element: <SignUp></SignUp>,
       },
       {
         path: "shops",
-        element: <Shop />
+        element: <Shop />,
       },
       {
         path: "categories/:categoryId",
-        element: <CategoryDetails />
+        element: <CategoryDetails />,
       },
       {
         path: "secret",
@@ -44,13 +47,9 @@ export const router = createBrowserRouter([
           <PrivateRoute>
             <Secret></Secret>
           </PrivateRoute>
-        )
+        ),
       },
-      {
-        path: "medicineCard",
-        element: <MedicineCard></MedicineCard>
-      }
-    ]
+    ],
   },
   {
     path: "/dashboard",
@@ -62,17 +61,30 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "carts",
-        element: <Cart />
+        element: <Cart />,
       },
       // admin routes
       {
         path: "users",
-        element: <AllUsers></AllUsers>
+        element: <AllUsers></AllUsers>,
       },
       {
         path: "payment",
-        element: <Payment></Payment>
-      }
-    ]
-  }
+        element: <Payment></Payment>,
+      },
+      {
+        path: "invoice",
+        element: <InvoicePage />,
+      },
+
+      {
+        path: "adminHome",
+        element: <AdminHome></AdminHome>,
+      },
+      {
+        path: "userHome",
+        element: <UserHome></UserHome>,
+      },
+    ],
+  },
 ]);

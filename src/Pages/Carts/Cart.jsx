@@ -16,7 +16,7 @@ const Cart = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure.delete(`/carts/${id}`).then((res) => {
@@ -25,7 +25,7 @@ const Cart = () => {
             Swal.fire({
               title: "Deleted!",
               text: "Your file has been deleted.",
-              icon: "success"
+              icon: "success",
             });
           }
         });
@@ -40,7 +40,7 @@ const Cart = () => {
         icon: "error",
         title: `Invalid quantity`,
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
 
       return;
@@ -48,7 +48,7 @@ const Cart = () => {
 
     axiosSecure
       .patch(`/carts/${cartId}`, {
-        quantity: quantity
+        quantity: quantity,
       })
       .then(() => refetch())
       .catch();

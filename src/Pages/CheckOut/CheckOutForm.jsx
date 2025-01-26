@@ -14,21 +14,27 @@ const CheckoutForm = () => {
   const elements = useElements();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  const [cart, refetch] = useCart();
+  const [cart, refetch, totalPrice, totalItem] = useCart();
   const navigate = useNavigate();
 
-  const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+  // const totalPrice = cart.reduce((total, item) => total + item.pricePerUnit, 0);
+  // console.log(totalItem);
 
   useEffect(() => {
     if (totalPrice > 0) {
+      console.log(totalPrice);
+
       axiosSecure
-        .post("/create-payment-intent", { price: totalPrice })
+        .post("/create-payment-intent", {
+          price: totalPrice,
+          quantity: totalItem,
+        })
         .then((res) => {
-          console.log(res.data.clientSecret);
+          console.log(res.data);
           setClientSecret(res.data.clientSecret);
         });
     }
-  }, [axiosSecure, totalPrice]);
+  }, [totalPrice]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -45,7 +51,7 @@ const CheckoutForm = () => {
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
-      card
+      card,
     });
 
     if (error) {
@@ -63,9 +69,9 @@ const CheckoutForm = () => {
           card: card,
           billing_details: {
             email: user?.email || "anonymous",
-            name: user?.displayName || "anonymous"
-          }
-        }
+            name: user?.displayName || "anonymous",
+          },
+        },
       });
 
     if (confirmError) {
@@ -83,22 +89,22 @@ const CheckoutForm = () => {
           transactionId: paymentIntent.id,
           date: new Date(), // utc date convert. use moment js to
           cartIds: cart.map((item) => item._id),
-          menuItemIds: cart.map((item) => item.menuId),
-          status: "pending"
+          status: "pending",
         };
 
         const res = await axiosSecure.post("/payments", payment);
         console.log("payment saved", res.data);
         refetch();
         if (res.data?.paymentResult?.insertedId) {
+          navigate("/dashboard/invoice");
+
           Swal.fire({
             position: "top-end",
             icon: "success",
             title: "Thank you for the taka paisa",
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
           });
-          navigate("/dashboard/paymentHistory");
         }
       }
     }
@@ -113,19 +119,19 @@ const CheckoutForm = () => {
               fontSize: "16px",
               color: "#424770",
               "::placeholder": {
-                color: "#aab7c4"
-              }
+                color: "#aab7c4",
+              },
             },
             invalid: {
-              color: "#9e2146"
-            }
-          }
+              color: "#9e2146",
+            },
+          },
         }}
       />
       <button
         className="btn btn-sm btn-primary my-4"
         type="submit"
-        disabled={!stripe || !clientSecret}
+        disabled={!stripe}
       >
         Pay
       </button>

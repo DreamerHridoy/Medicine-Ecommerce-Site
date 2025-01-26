@@ -1,8 +1,24 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAuth from "../../hooks/useAuth";
 
-const InvoicePage = ({ userInfo, purchaseInfo }) => {
+const InvoicePage = () => {
   const componentRef = useRef();
+
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+
+  const { data: payments = [] } = useQuery({
+    queryKey: ["payments", user.email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/payments/${user.email}`);
+      return res.data;
+    },
+  });
+
+  console.log({ user, payments });
 
   // Function to handle print/download
   const handlePrint = useReactToPrint({
@@ -11,12 +27,9 @@ const InvoicePage = ({ userInfo, purchaseInfo }) => {
   });
 
   return (
-    <div className="p-8 bg-gray-100 min-h-screen">
+    <div className="p-8 bg-gray-100 min-h-screen" ref={componentRef}>
       {/* Invoice Content */}
-      <div
-        ref={componentRef}
-        className="bg-white shadow-md rounded-md p-6 max-w-4xl mx-auto"
-      >
+      <div className="bg-white shadow-md rounded-md p-6 max-w-4xl mx-auto">
         {/* Logo */}
         <div className="text-center mb-4">
           <img
@@ -30,47 +43,30 @@ const InvoicePage = ({ userInfo, purchaseInfo }) => {
         {/* User Information */}
         <div className="mb-6">
           <h2 className="font-semibold text-lg">Customer Information</h2>
-          <p>Name: {userInfo.name}</p>
-          <p>Email: {userInfo.email}</p>
-          <p>Address: {userInfo.address}</p>
+          <p>Name: {user.displayName}</p>
+          <p>Email: {user.email}</p>
         </div>
 
         {/* Purchase Information */}
         <div>
           <h2 className="font-semibold text-lg">Purchase Details</h2>
-          <table className="table-auto w-full mt-4 border-collapse border border-gray-300">
+          <table className="table table-zebra">
+            {/* head */}
             <thead>
-              <tr className="bg-gray-200">
-                <th className="border border-gray-300 px-4 py-2">Item</th>
-                <th className="border border-gray-300 px-4 py-2">Quantity</th>
-                <th className="border border-gray-300 px-4 py-2">Price</th>
-                <th className="border border-gray-300 px-4 py-2">Discount</th>
-                <th className="border border-gray-300 px-4 py-2">Total</th>
+              <tr>
+                <th>#</th>
+                <th>price</th>
+                <th>Transaction Id</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
-              {purchaseInfo.map((item, index) => (
-                <tr key={index}>
-                  <td className="border border-gray-300 px-4 py-2">
-                    {item.name}
-                  </td>
-                  <td className="border border-gray-300 px-4 py-2">
-                    {item.quantity}
-                  </td>
-                  <td className="border border-gray-300 px-4 py-2">
-                    ${item.price}
-                  </td>
-                  <td className="border border-gray-300 px-4 py-2">
-                    {item.discount}%
-                  </td>
-                  <td className="border border-gray-300 px-4 py-2">
-                    $
-                    {(
-                      item.price *
-                      item.quantity *
-                      (1 - item.discount / 100)
-                    ).toFixed(2)}
-                  </td>
+              {payments?.map((payment, index) => (
+                <tr key={payment._id}>
+                  <th>{index + 1}</th>
+                  <td>${payment.price}</td>
+                  <td>{payment.transactionId}</td>
+                  <td>{payment.status}</td>
                 </tr>
               ))}
             </tbody>
@@ -78,7 +74,7 @@ const InvoicePage = ({ userInfo, purchaseInfo }) => {
         </div>
 
         {/* Total */}
-        <div className="text-right mt-6">
+        {/* <div className="text-right mt-6">
           <h2 className="font-bold text-lg">
             Grand Total: $
             {purchaseInfo
@@ -89,7 +85,7 @@ const InvoicePage = ({ userInfo, purchaseInfo }) => {
               )
               .toFixed(2)}
           </h2>
-        </div>
+        </div> */}
       </div>
 
       {/* Print Button */}

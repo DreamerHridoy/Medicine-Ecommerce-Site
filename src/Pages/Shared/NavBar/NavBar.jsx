@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
 import useCart from "../../../hooks/useCart";
+import useAdmin from "../../../hooks/useAdmin";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
   const [cart, _refetch, _totalPrice, totalItem] = useCart();
   const handleLogOut = () => {
     logOut()
@@ -26,7 +28,16 @@ const NavBar = () => {
           <Link to="/">Join Us</Link>
         </li>
       )}
-
+      {user && isAdmin && (
+        <li>
+          <Link to="/dashboard/adminHome">Dashboard</Link>
+        </li>
+      )}
+      {user && !isAdmin && (
+        <li>
+          <Link to="/dashboard/userHome">Dashboard</Link>
+        </li>
+      )}
       <li>
         <Link to="/dashboard/carts">
           <FaShoppingCart className="mr-2"></FaShoppingCart>
@@ -89,7 +100,11 @@ const NavBar = () => {
               role="button"
               className="btn btn-ghost rounded-btn"
             >
-              <img src={user.photoURL} alt="Profile image" />
+              <img
+                src={user.photoURL}
+                alt="Profile image"
+                className="size-10 rounded-full"
+              />
             </div>
             <ul
               tabIndex={0}

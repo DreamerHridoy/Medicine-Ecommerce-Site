@@ -1,8 +1,7 @@
 import { FaGoogle } from "react-icons/fa";
-
+import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import { useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
   const { googleSignIn } = useAuth();
