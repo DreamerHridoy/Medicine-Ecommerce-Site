@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
-  validateCaptcha,
+  validateCaptcha
 } from "react-simple-captcha";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
@@ -36,11 +36,11 @@ const Login = () => {
       Swal.fire({
         title: "User Login Successful.",
         showClass: {
-          popup: "animate__animated animate__fadeInDown",
+          popup: "animate__animated animate__fadeInDown"
         },
         hideClass: {
-          popup: "animate__animated animate__fadeOutUp",
-        },
+          popup: "animate__animated animate__fadeOutUp"
+        }
       });
       navigate(from, { replace: true });
     });

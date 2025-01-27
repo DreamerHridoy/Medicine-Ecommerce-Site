@@ -122,6 +122,19 @@ const NavBar = () => {
             </ul>
           </div>
         )}
+
+        <div className="dropdown dropdown-end">
+          <div tabIndex={0} role="button" className="btn btn-ghost rounded-btn">
+            Language
+          </div>
+          <ul
+            tabIndex={0}
+            className="menu dropdown-content bg-base-100 text-black rounded-box z-[1] mt-4 w-52 p-2 shadow"
+          >
+            <li>Bengali</li>
+            <li>English</li>
+          </ul>
+        </div>
       </div>
     </>
   );

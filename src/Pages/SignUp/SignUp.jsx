@@ -13,7 +13,7 @@ const SignUp = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors }
   } = useForm();
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const SignUp = () => {
           const userInfo = {
             name: data.name,
             email: data.email,
-            role: "USER",
+            role: "USER"
           };
           axiosPublic.post("/users", userInfo).then((res) => {
             if (res.data.insertedId) {
@@ -39,7 +39,7 @@ const SignUp = () => {
                 icon: "success",
                 title: "User created successfully.",
                 showConfirmButton: false,
-                timer: 1500,
+                timer: 1500
               });
               navigate("/");
             }
@@ -120,7 +120,7 @@ const SignUp = () => {
                     required: true,
                     minLength: 6,
                     maxLength: 20,
-                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
                   })}
                   placeholder="password"
                   className="input input-bordered"

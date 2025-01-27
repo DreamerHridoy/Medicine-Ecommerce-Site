@@ -11,7 +11,7 @@ import {
   CartesianGrid,
   PieChart,
   Pie,
-  Legend,
+  Legend
 } from "recharts";
 
 const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "red", "pink"];
@@ -26,7 +26,7 @@ const AdminHome = () => {
     queryFn: async () => {
       const res = await axiosSecure.get("/admin-stats");
       return res.data;
-    },
+    }
   });
   console.log(stats);
 
@@ -35,7 +35,7 @@ const AdminHome = () => {
     queryFn: async () => {
       const res = await axiosSecure.get("/order-stats");
       return res.data;
-    },
+    }
   });
 
   // custom shape for the bar chart
@@ -64,7 +64,7 @@ const AdminHome = () => {
     midAngle,
     innerRadius,
     outerRadius,
-    percent,
+    percent
   }) => {
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
@@ -143,7 +143,7 @@ const AdminHome = () => {
               top: 20,
               right: 30,
               left: 20,
-              bottom: 5,
+              bottom: 5
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />

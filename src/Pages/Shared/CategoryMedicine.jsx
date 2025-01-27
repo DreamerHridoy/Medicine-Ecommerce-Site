@@ -18,7 +18,8 @@ const CategoryMedicine = ({ title, medicines }) => {
       discountPercentage,
       stock,
       image,
-      _id
+      _id,
+      sellerEmail
     } = medicine;
     if (user && user.email) {
       const findMedicineInCart = cart.find((item) => item.medicineId === _id);
@@ -32,6 +33,7 @@ const CategoryMedicine = ({ title, medicines }) => {
         stock,
         image,
         medicineId: _id,
+        sellerEmail,
         quantity: 1
       };
       if (findMedicineInCart) {

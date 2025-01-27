@@ -1,15 +1,20 @@
 import {
   FaAd,
+  FaAdversal,
   FaBook,
   FaCalendar,
+  FaCartArrowDown,
+  FaCoins,
   FaEnvelope,
   FaHome,
   FaList,
+  FaSalesforce,
   FaSearch,
   FaShoppingCart,
   FaUsers,
   FaUtensils,
 } from "react-icons/fa";
+
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 // import useAuth from "../hooks/useAuth";
@@ -42,25 +47,25 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink to="/dashboard/category-management">
-                  <FaUsers></FaUsers>
+                  <FaCartArrowDown></FaCartArrowDown>
                   Manage Category
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/payment-management">
-                  <FaUsers></FaUsers>
+                  <FaCoins></FaCoins>
                   Payment management
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/sales">
-                  <FaUsers></FaUsers>
+                  <FaSalesforce></FaSalesforce>
                   Sales Report
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/banners">
-                  <FaUsers></FaUsers>
+                  <FaAdversal></FaAdversal>
                   Manage Banner Advertise
                 </NavLink>
               </li>
@@ -80,7 +85,7 @@ const Dashboard = () => {
           ) : isSeller ? (
             <>
               <li>
-                <NavLink to="/dashboard/userHome">
+                <NavLink to="/dashboard/sales/home">
                   <FaHome></FaHome>
                   Seller Home
                 </NavLink>
@@ -104,7 +109,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/paymentHistory">
+                <NavLink to="/dashboard/sales/paymentHistory">
                   <FaList></FaList>
                   Real Payment History
                 </NavLink>
