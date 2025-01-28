@@ -3,6 +3,8 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import CategoryList from "../../Category/CategoryList";
 import DiscountProducts from "../../DiscountProducts/DiscountProducts";
 import Banner from "../Banner/Banner";
+import FaqSection from "../FaqSection/FaqSection";
+import AdvertiseBoard from "../AdvertiseBoard/AdvertiseBoard";
 
 const Home = () => {
   const [medicines, setMedicines] = useState([]);
@@ -21,6 +23,8 @@ const Home = () => {
       <Banner></Banner>
       <DiscountProducts medicines={medicines} />
       <CategoryList></CategoryList>
+      <AdvertiseBoard></AdvertiseBoard>
+      <FaqSection></FaqSection>
     </div>
   );
 };
