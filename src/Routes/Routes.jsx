@@ -1,3 +1,4 @@
+import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import AdminHome from "../Components/AdminHome/AdminHome";
 import UserHome from "../Components/UserHome/UserHome";
@@ -20,7 +21,7 @@ import SalesManagement from "../Pages/Sales";
 import SalesHome from "../Pages/Sales/SalesHome";
 import PaymentManagementSales from "../Pages/Sales/paymentHistory";
 import AdvertiseSeller from "../Pages/Advertise";
-import CreateMedicineRoute from "../Pages/CreateMedicineRoute/CreateMedicineRoute";
+import MedicineManagement from "../Pages/MedicineManagement/MedicineManagement";
 import NotFound from "../Pages/NotFound/NotFound";
 
 export const router = createBrowserRouter([
@@ -32,7 +33,7 @@ export const router = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "signup", element: <SignUp /> },
       { path: "shops", element: <Shop /> },
-      { path: "categories/:categoryId", element: <CategoryDetails /> },
+      { path: "categories/:categoryName", element: <CategoryDetails /> },
       {
         path: "secret",
         element: (
@@ -58,7 +59,7 @@ export const router = createBrowserRouter([
       { path: "category-management", element: <CategoryManagement /> },
       { path: "payment-management", element: <PaymentManagement /> },
       { path: "invoice", element: <InvoicePage /> },
-      { path: "seller/create-medicine", element: <CreateMedicineRoute /> },
+
       { path: "seller/advertise", element: <AdvertiseSeller /> },
       { path: "adminHome", element: <AdminHome /> },
       { path: "userHome", element: <UserHome /> },
@@ -67,6 +68,7 @@ export const router = createBrowserRouter([
         children: [
           { path: "", element: <SalesManagement /> },
           { path: "home", element: <SalesHome /> },
+          { path: "medicine-management", element: <MedicineManagement /> },
           { path: "paymentHistory", element: <PaymentManagementSales /> },
         ],
       },

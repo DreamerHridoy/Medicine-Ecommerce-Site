@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import CategoryList from "../../Category/CategoryList";
 import DiscountProducts from "../../DiscountProducts/DiscountProducts";

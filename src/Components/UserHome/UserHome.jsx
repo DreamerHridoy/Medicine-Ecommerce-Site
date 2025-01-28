@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
@@ -13,8 +14,6 @@ const UserHome = () => {
       return res.data;
     },
   });
-
-  // console.log(payments);
 
   return (
     <div>

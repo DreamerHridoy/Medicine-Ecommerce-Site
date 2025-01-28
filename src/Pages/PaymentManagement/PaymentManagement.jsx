@@ -12,7 +12,6 @@ const PaymentManagement = () => {
       return res.data;
     },
   });
-  console.log(payments);
 
   return (
     <div>

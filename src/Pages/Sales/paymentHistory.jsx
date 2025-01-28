@@ -12,9 +12,8 @@ const PaymentManagementSales = () => {
     queryFn: async () => {
       const res = await axiosSecure.get(`/payments/seller/${user?.email}`);
       return res.data;
-    }
+    },
   });
-  console.log(payments);
 
   return (
     <div>

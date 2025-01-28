@@ -15,8 +15,8 @@ const CategoryList = () => {
       .catch((err) => console.error("Error fetching categories:", err));
   }, []);
 
-  const handleCategoryClick = (categoryId) => {
-    navigate(`/categories/${categoryId}`);
+  const handleCategoryClick = (categoryName) => {
+    navigate(`/categories/${categoryName}`);
   };
 
   return (

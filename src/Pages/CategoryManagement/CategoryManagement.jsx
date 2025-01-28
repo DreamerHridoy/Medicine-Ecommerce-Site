@@ -9,9 +9,8 @@ const CategoryManagement = () => {
     queryFn: async () => {
       const res = await axiosSecure.get(`/categories`);
       return res.data;
-    }
+    },
   });
-  console.log(categories);
 
   return (
     <div>

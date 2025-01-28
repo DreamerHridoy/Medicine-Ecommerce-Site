@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
@@ -19,11 +20,11 @@ const CategoryMedicine = ({ title, medicines }) => {
       stock,
       image,
       _id,
-      sellerEmail
+      sellerEmail,
     } = medicine;
     if (user && user.email) {
       const findMedicineInCart = cart.find((item) => item.medicineId === _id);
-      console.log("--", findMedicineInCart);
+
       const cartItem = {
         name,
         email: user.email,
@@ -34,24 +35,23 @@ const CategoryMedicine = ({ title, medicines }) => {
         image,
         medicineId: _id,
         sellerEmail,
-        quantity: 1
+        quantity: 1,
       };
       if (findMedicineInCart) {
         axiosSecure
           .patch(`/carts/${findMedicineInCart._id}`, {
             quantity: findMedicineInCart?.quantity
               ? findMedicineInCart?.quantity + 1
-              : 1
+              : 1,
           })
           .then((res) => {
-            console.log(res.data);
             if (res.data.modifiedCount > 0) {
               Swal.fire({
                 position: "top-end",
                 icon: "success",
                 title: `${name} added to your cart`,
                 showConfirmButton: false,
-                timer: 1500
+                timer: 1500,
               });
               refetch();
             }
@@ -67,7 +67,7 @@ const CategoryMedicine = ({ title, medicines }) => {
             icon: "success",
             title: `${name} added to your cart`,
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
           });
           refetch();
         }
@@ -80,7 +80,7 @@ const CategoryMedicine = ({ title, medicines }) => {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, login!"
+        confirmButtonText: "Yes, login!",
       }).then((result) => {
         if (result.isConfirmed) {
           navigate("/login", { state: { from: location } });
@@ -107,7 +107,7 @@ const CategoryMedicine = ({ title, medicines }) => {
         </thead>
         <tbody>
           {medicines.map((medicine) => (
-            <tr key={medicine.id}>
+            <tr key={medicine._id}>
               <td className="border p-2">{medicine.name}</td>
               <td className="border p-2">{medicine.company}</td>
               <td className="border p-2">${medicine.pricePerUnit}</td>

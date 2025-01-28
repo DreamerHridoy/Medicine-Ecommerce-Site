@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+import React from "react";
 import {
   FaAd,
   FaAdversal,
@@ -90,12 +92,7 @@ const Dashboard = () => {
                   Seller Home
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/dashboard/history">
-                  <FaCalendar></FaCalendar>
-                  Not History
-                </NavLink>
-              </li>
+
               <li>
                 <NavLink to="/dashboard/cart">
                   <FaShoppingCart></FaShoppingCart>
@@ -106,6 +103,12 @@ const Dashboard = () => {
                 <NavLink to="/dashboard/review">
                   <FaAd></FaAd>
                   Add a Review
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/sales/medicine-management">
+                  <FaCalendar></FaCalendar>
+                  Manage Medicine
                 </NavLink>
               </li>
               <li>
