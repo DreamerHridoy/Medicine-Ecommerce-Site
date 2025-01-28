@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import sliderimg1 from "../../../assets/home/Medicineslider1.jpg";
@@ -12,22 +13,22 @@ const Banner = () => {
     <div>
       <Carousel>
         <div>
-          <img src={sliderimg1} />
+          <img className="" src={sliderimg1} />
         </div>
         <div>
-          <img src={sliderimg2} />
+          <img className="" src={sliderimg2} />
         </div>
         <div>
-          <img src={sliderimg3} />
+          <img className="" src={sliderimg3} />
         </div>
         <div>
-          <img src={sliderimg4} />
+          <img className="" src={sliderimg4} />
         </div>
         <div>
-          <img src={sliderimg5} />
+          <img className="" src={sliderimg5} />
         </div>
         <div>
-          <img src={sliderimg6} />
+          <img className="" src={sliderimg6} />
         </div>
       </Carousel>
     </div>
