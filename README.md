@@ -1,4 +1,7 @@
-💊 Medicine Selling eCommerce Website
+                                                         💊 Medicine Selling eCommerce Website
+
+
+
 This project is a full-stack eCommerce platform for selling medicines online. It includes a user-friendly frontend built with React and a secure backend using Express.js and MongoDB. The platform supports user authentication, role-based access (Admin, Seller, Buyer), cart management, payment processing via Stripe, and category-wise medicine browsing.
 
 🚀 Features
