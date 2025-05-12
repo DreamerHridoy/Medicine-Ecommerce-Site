@@ -1,5 +1,6 @@
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import React from "react";
 import { Link } from "react-router-dom";
 import useCart from "../../hooks/useCart";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
@@ -19,16 +20,21 @@ const Cart = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.delete(`/carts/${id}`).then((res) => {
-          if (res.data.deletedCount > 0) {
-            refetch();
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
-              icon: "success",
-            });
-          }
-        });
+        axiosSecure
+          .delete(`/carts/${id}`)
+          .then((res) => {
+            if (res.data.deletedCount > 0) {
+              refetch();
+              Swal.fire({
+                title: "Deleted!",
+                text: "Item has been deleted.",
+                icon: "success",
+              });
+            }
+          })
+          .catch((err) => {
+            console.error("Delete failed:", err);
+          });
       }
     });
   };
@@ -42,23 +48,22 @@ const Cart = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-
       return;
     }
 
     axiosSecure
-      .patch(`/carts/${cartId}`, {
-        quantity: quantity,
-      })
+      .patch(`/carts/${cartId}`, { quantity })
       .then(() => refetch())
-      .catch();
+      .catch((err) => {
+        console.error("Quantity update failed:", err);
+      });
   };
 
   return (
     <div>
       <div className="flex justify-evenly mb-8">
         <h2 className="text-4xl">Items: {totalItem}</h2>
-        <h2 className="text-4xl">Total Price: {totalPrice}</h2>
+        <h2 className="text-4xl">Total Price: ${totalPrice}</h2>
         {cart.length ? (
           <Link to="/dashboard/payment">
             <button className="btn btn-primary">Pay</button>
@@ -70,8 +75,7 @@ const Cart = () => {
         )}
       </div>
       <div className="overflow-x-auto">
-        <table className="table  w-full">
-          {/* head */}
+        <table className="table w-full">
           <thead>
             <tr>
               <th>#</th>
@@ -94,23 +98,20 @@ const Cart = () => {
                     <button
                       className="h-7 w-7 bg-gray-300 text-md disabled:bg-gray-100 disabled:cursor-not-allowed"
                       disabled={item.quantity === 1}
-                      onClick={() => {
-                        handleChange(item._id, item.quantity - 1);
-                      }}
+                      onClick={() => handleChange(item._id, item.quantity - 1)}
                     >
                       -
                     </button>
                     <input
                       type="text"
+                      readOnly
                       className="text-base text-center w-10 border border-gray-300 focus:outline-none disabled:bg-gray-100 disabled:cursor-not-allowed"
                       value={item.quantity}
                     />
                     <button
-                      className="h-7 w-7 bg-gray-300 text-md"
+                      className="h-7 w-7 bg-gray-300 text-md disabled:bg-gray-100 disabled:cursor-not-allowed"
                       disabled={item.quantity === item.stock}
-                      onClick={() => {
-                        handleChange(item._id, item.quantity + 1);
-                      }}
+                      onClick={() => handleChange(item._id, item.quantity + 1)}
                     >
                       +
                     </button>
@@ -121,7 +122,7 @@ const Cart = () => {
                     onClick={() => handleDelete(item._id)}
                     className="btn btn-ghost btn-lg"
                   >
-                    <FaTrashAlt className="text-red-600"></FaTrashAlt>
+                    <FaTrashAlt className="text-red-600" />
                   </button>
                 </th>
               </tr>
