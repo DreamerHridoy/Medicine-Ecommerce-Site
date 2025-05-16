@@ -3,7 +3,6 @@ import React from "react";
 import {
   FaAd,
   FaAdversal,
-  FaBook,
   FaCalendar,
   FaCartArrowDown,
   FaCoins,
@@ -14,12 +13,10 @@ import {
   FaSearch,
   FaShoppingCart,
   FaUsers,
-  FaUtensils,
 } from "react-icons/fa";
 
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
-// import useAuth from "../hooks/useAuth";
 import useAdmin from "../hooks/useAdmin";
 import useSeller from "../hooks/useSeller";
 
@@ -29,155 +26,138 @@ const Dashboard = () => {
   const [isSeller] = useSeller();
 
   return (
-    <div className="flex">
-      {/* dashboard side bar */}
-      <div className="w-64 min-h-screen bg-blue-400">
-        <ul className="menu p-4">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-gray-50 text-gray-800">
+      {/* Sidebar */}
+      <aside className="w-full lg:w-64 bg-white border-r border-gray-200 shadow-md">
+        <div className="p-6 font-bold text-lg text-blue-600">Dashboard</div>
+        <ul className="menu p-4 space-y-2">
           {isAdmin ? (
             <>
               <li>
-                <NavLink to="/dashboard/adminHome">
-                  <FaHome></FaHome>
-                  Admin Home
+                <NavLink to="/dashboard/adminHome" className="nav-item">
+                  <FaHome /> Admin Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/user-management">
-                  <FaUsers></FaUsers>
-                  Manage Users
+                <NavLink to="/dashboard/user-management" className="nav-item">
+                  <FaUsers /> Manage Users
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/category-management">
-                  <FaCartArrowDown></FaCartArrowDown>
-                  Manage Category
+                <NavLink
+                  to="/dashboard/category-management"
+                  className="nav-item"
+                >
+                  <FaCartArrowDown /> Manage Category
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/payment-management">
-                  <FaCoins></FaCoins>
-                  Payment management
+                <NavLink
+                  to="/dashboard/payment-management"
+                  className="nav-item"
+                >
+                  <FaCoins /> Payment Management
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/sales">
-                  <FaSalesforce></FaSalesforce>
-                  Sales Report
+                <NavLink to="/dashboard/sales" className="nav-item">
+                  <FaSalesforce /> Sales Report
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/banners">
-                  <FaAdversal></FaAdversal>
-                  Manage Banner Advertise
+                <NavLink to="/dashboard/banners" className="nav-item">
+                  <FaAdversal /> Banner Management
                 </NavLink>
               </li>
-              {/* <li>
-                <NavLink to="/dashboard/addItems">
-                  <FaUtensils></FaUtensils>
-                  Add Items
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/manageItems">
-                  <FaList></FaList>
-                  Manage Items
-                </NavLink>
-              </li> */}
             </>
           ) : isSeller ? (
             <>
               <li>
-                <NavLink to="/dashboard/sales/home">
-                  <FaHome></FaHome>
-                  Seller Home
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink to="/dashboard/cart">
-                  <FaShoppingCart></FaShoppingCart>
-                  My Cart ({cart.length})
+                <NavLink to="/dashboard/sales/home" className="nav-item">
+                  <FaHome /> Seller Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/review">
-                  <FaAd></FaAd>
-                  Add a Review
+                <NavLink to="/dashboard/cart" className="nav-item">
+                  <FaShoppingCart /> My Cart ({cart.length})
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/sales/medicine-management">
-                  <FaCalendar></FaCalendar>
-                  Manage Medicine
+                <NavLink to="/dashboard/review" className="nav-item">
+                  <FaAd /> Add a Review
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/sales/paymentHistory">
-                  <FaList></FaList>
-                  Real Payment History
+                <NavLink
+                  to="/dashboard/sales/medicine-management"
+                  className="nav-item"
+                >
+                  <FaCalendar /> Manage Medicine
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/sales/paymentHistory"
+                  className="nav-item"
+                >
+                  <FaList /> Payment History
                 </NavLink>
               </li>
             </>
           ) : (
             <>
               <li>
-                <NavLink to="/dashboard/userHome">
-                  <FaHome></FaHome>
-                  User Home
+                <NavLink to="/dashboard/userHome" className="nav-item">
+                  <FaHome /> User Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/history">
-                  <FaCalendar></FaCalendar>
-                  Not History
+                <NavLink to="/dashboard/history" className="nav-item">
+                  <FaCalendar /> Order History
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/cart">
-                  <FaShoppingCart></FaShoppingCart>
-                  My Cart ({cart.length})
+                <NavLink to="/dashboard/cart" className="nav-item">
+                  <FaShoppingCart /> My Cart ({cart.length})
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/review">
-                  <FaAd></FaAd>
-                  Add a Review
+                <NavLink to="/dashboard/review" className="nav-item">
+                  <FaAd /> Add a Review
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/paymentHistory">
-                  <FaList></FaList>
-                  Real Payment History
+                <NavLink to="/dashboard/paymentHistory" className="nav-item">
+                  <FaList /> Payment History
                 </NavLink>
               </li>
             </>
           )}
-          {/* shared nav links */}
-          <div className="divider"></div>
+
+          {/* Shared Nav Links */}
+          <div className="divider my-4 border-t border-gray-200"></div>
           <li>
-            <NavLink to="/">
-              <FaHome></FaHome>
-              Home
+            <NavLink to="/" className="nav-item">
+              <FaHome /> Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/order/salad">
-              <FaSearch></FaSearch>
-              Menu
+            <NavLink to="/order/salad" className="nav-item">
+              <FaSearch /> Menu
             </NavLink>
           </li>
           <li>
-            <NavLink to="/order/contact">
-              <FaEnvelope></FaEnvelope>
-              Contact
+            <NavLink to="/order/contact" className="nav-item">
+              <FaEnvelope /> Contact
             </NavLink>
           </li>
         </ul>
-      </div>
-      {/* dashboard content */}
-      <div className="flex-1 p-8">
-        <Outlet></Outlet>
-      </div>
+      </aside>
+
+      {/* Content */}
+      <main className="flex-1 p-4 md:p-8 bg-gray-100 overflow-y-auto">
+        <Outlet />
+      </main>
     </div>
   );
 };

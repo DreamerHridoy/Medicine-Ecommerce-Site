@@ -1,3 +1,15 @@
+/*
+  The following directives require Tailwind CSS to process this file.
+  Make sure your build tool (like PostCSS with Tailwind) is set up correctly.
+*/
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nav-item {
+  @apply flex items-center gap-3 px-4 py-2 rounded-md text-gray-700 hover:bg-blue-100 hover:text-blue-600 transition-all duration-200;
+}
+
+.nav-item.active {
+  @apply bg-blue-200 font-semibold text-blue-700;
+}
